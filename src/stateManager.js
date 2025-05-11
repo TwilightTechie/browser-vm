@@ -100,25 +100,8 @@ export async function loadStateFromPath(emulator, statePath) {
             throw new Error(`Failed to load state file: ${response.statusText} (Status: ${response.status})`);
         }
         console.log('State file fetched successfully');
-        
-        let stateData;
-        if (statePath.endsWith('.zst')) {
-            // For .zst files, we need to decompress them
-            const compressedData = await response.arrayBuffer();
-            console.log('Compressed data loaded, size:', compressedData.byteLength, 'bytes');
-            
-            // Use the browser's built-in decompression
-            const decompressedData = await new Response(
-                new Blob([compressedData]).stream().pipeThrough(new DecompressionStream('zstd'))
-            ).arrayBuffer();
-            
-            console.log('Data decompressed, size:', decompressedData.byteLength, 'bytes');
-            stateData = decompressedData;
-        } else {
-            stateData = await response.arrayBuffer();
-        }
-        
-        console.log('State data ready, size:', stateData.byteLength, 'bytes');
+        const stateData = await response.arrayBuffer();
+        console.log('State data loaded, size:', stateData.byteLength, 'bytes');
         await emulator.restore_state(stateData);
         console.log('State restored successfully');
         emulator.run();

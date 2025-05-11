@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { setupStateManagement, loadStateFromPath } from './stateManager';
 
 // Define the path to your state file
-const STATE_FILE_PATH = import.meta.env.VITE_STATE_FILE_URL || '/images/direct_snap.bin';
+const STATE_FILE_PATH = import.meta.env.VITE_STATE_FILE_URL || '/images/direct_snap.bin.zst';
 
 function App() {
   useEffect(function initializeEmulator(){
