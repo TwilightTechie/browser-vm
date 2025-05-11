@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { setupStateManagement, loadStateFromPath } from './stateManager';
 
 // Define the path to your state file
-const STATE_FILE_PATH = '/images/direct_snap.bin.zst'; // Change this to your actual state file path
+const STATE_FILE_PATH = import.meta.env.VITE_STATE_FILE_URL || '/images/direct_snap.bin.zst';
 
 function App() {
   useEffect(function initializeEmulator(){
@@ -10,13 +10,13 @@ function App() {
     
     // Base configuration without CD-ROM
     const baseConfig = {
-      wasm_path:  '/v86.wasm',
-      screen_container:  document.getElementById("screen_container"),
+      wasm_path: import.meta.env.VITE_WASM_URL || '/v86.wasm',
+      screen_container: document.getElementById("screen_container"),
       bios: {
-        url:  "/bios/seabios.bin",
+        url: import.meta.env.VITE_BIOS_URL || "/bios/seabios.bin",
       },
       vga_bios: {
-        url:  "/bios/vgabios.bin",
+        url: import.meta.env.VITE_VGA_BIOS_URL || "/bios/vgabios.bin",
       },
       boot_order: '0x123', // Boot from CD-ROM first
       memory_size: 512 * 1024 * 1024, // 512MB RAM
@@ -44,7 +44,7 @@ function App() {
           console.log('State loading failed, starting normal boot with CD-ROM...');
           // Only load CD-ROM if state loading fails
           window.emulator.load_cdrom({
-            url: "/images/alpine-virt-3.21.3-x86.iso",
+            url: import.meta.env.VITE_CDROM_URL || "/images/alpine-virt-3.21.3-x86.iso",
           }).then(() => {
             window.emulator.run();
           });
