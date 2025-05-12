@@ -34,7 +34,7 @@ logs
 
 # Large files
 #public/images/*.bin
-public/images/*.bin.zst
+#public/images/*.bin.zst
 public/images/*.iso
 public/bios/*.bin
 public/v86.wasm
