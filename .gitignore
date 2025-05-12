@@ -33,7 +33,7 @@ logs
 *.log
 
 # Large files
-public/images/*.bin
+#public/images/*.bin
 public/images/*.bin.zst
 public/images/*.iso
 public/bios/*.bin
