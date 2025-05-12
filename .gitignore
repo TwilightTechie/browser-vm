@@ -35,10 +35,10 @@ logs
 # Large files
 #public/images/*.bin
 #public/images/*.bin.zst
-public/images/*.iso
-public/bios/*.bin
-public/v86.wasm
-public/libv86.js
+#public/images/*.iso
+#public/bios/*.bin
+#public/v86.wasm
+#public/libv86.js
 
 node_modules
 dist
