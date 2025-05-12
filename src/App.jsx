@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { setupStateManagement, loadStateFromPath } from './stateManager';
 
 // Define the path to your state file
+//random
 const STATE_FILE_PATH = import.meta.env.VITE_STATE_FILE_URL || '/images/direct_snap.bin.zst';
 
 // Debug function to check if a URL is accessible
